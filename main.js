@@ -10,6 +10,9 @@ const music = new Audio('music.mp3');
 music.play();
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+var left = document.querySelector(".left")
+var right = document.querySelector(".right")
+
 
 
 let score = 0, Hscore = 0, d = 0
@@ -17,6 +20,7 @@ let x = 200, y = 100, w = 150, h = 200
 let x1 = 75, y1 = -450, w1 = 250, h1 = 900
 let x2 = 160, y2 = 320, w2 = 50, h2 = 80
 let x3 = 160, y3 = 0, w3 = 50, h3 = 80
+
 
 road();
 race();
@@ -27,31 +31,42 @@ copyImage();
 let leftPressed = false
 let rightPressed = false
 let interval = null
-// document.addEventListener("keydown",handleKeyDown)
-// document.addEventListener("keyup",handleKeyUp)
 
-// function handleKeyDown(e){
-//      if(e.key==="ArrowLeft"){
-//          leftPressed = true
-//          }
-//      if(e.key==="ArrowRight"){
-//          rightPressed = true
-//       }
-//     }
-
-
-//  function handleKeyUp(e){
-//          if(e.key==="ArrowLeft"){
-//            leftPressed = false
-//          }
-//          if(e.key==="ArrowRight"){
-//             rightPressed = false
-//           }
-//     }
+// manual button code start 
+var i1 = null, i2 = null;
+left.addEventListener('touchstart', e => {
+    left.style.background = "red"
+    clearInterval(i2)
+    i1 = setInterval(() => {
+        if (x2 >= 105) {
+            x2 = x2 - 10
+        }
+    }, 20);
+})
+right.addEventListener('touchstart', e => {
+    right.style.background = "red"
+    clearInterval(i1)
+    i2 = setInterval(() => {
+        if (x2 <= 240) {
+            x2 = x2 + 10
+        }
+    }, 20);
+})
+left.addEventListener('touchend', e => {
+    left.style.background = "#008CBA"
+    clearInterval(i1)
+})
+right.addEventListener('touchend', e => {
+    right.style.background = "#008CBA"
+    clearInterval(i2)
+})
+// manual button code end
 
 function restartGame(button) {
 
+
     if (!interval) {
+
 
         card.style.display = "none";
         score = 0, d = 0
@@ -83,7 +98,6 @@ function restartGame(button) {
                 }
             }
 
-
             function handleKeyUp(e) {
                 if (e.key === "ArrowLeft") {
                     leftPressed = false
@@ -103,6 +117,7 @@ function restartGame(button) {
                     x2 = x2 + 10
                 }
             }
+
             //chrocodial
             x = x - 1
             if (x == -150) {
