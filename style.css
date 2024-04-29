@@ -1,22 +1,59 @@
-/* *{
+*{
     padding: 0;
     margin: 0;
-} */
+    box-sizing: border-box;
+}
 
-body{
+html, body{
     /* background-image:url("Desert.jpg"); */
     /* background-position: fixed; */
-    background-color: rgb(206, 154, 43);
+    /* background-color: rgb(206, 154, 43);
     min-height: 100vh;
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: hidden; */
+    height: 100%;
+    width: 100%;
+    /* border: 5px solid red; */
+}
+.container{
+    /* position: relative; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: hidden; */
+    height: 80%;
+    width: 100%;
+    border: 2px solid red;
+}
+.btn{
+    position: absolute;
+    bottom: 40px;
+
+}
+.btn button{
+    height: 70px;
+    width: 90px;
+    border-radius: 5px;
+    user-select: none;
+    margin: 0 20px;
+    background-color: #008CBA;
 }
 canvas{
     background-color: #4649FF;
+    /* border: 2px solid yellow; */
+}
+@media (max-width: 600px){
+    canvas{
+        /* height: 100; */
+        width: 100vw;
+    }
+    .btn{
+        bottom: 100px;
+    }
 }
 .Score{
     color: rgb(0, 0, 0);
@@ -33,6 +70,7 @@ canvas{
     align-items: center;
     color: black;
     text-align: center;
+    /* border: 2px solid black */
 }
 #overplay #card {
     background-color: white;
